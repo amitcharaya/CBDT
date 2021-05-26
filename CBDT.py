@@ -223,7 +223,7 @@ def createResponse():
 
     sheet=wb.active
     cell=sheet.cell(row=1,column=2)
-    fileName="AV-"+ sheet.cell(row=2, column=2).value[:4] + "-" + sheet.cell(row=3, column=2).value[:4] + "-" + sheet.cell(row=3, column=3).value + "-" + sheet.cell(row=3, column=4).value + "-" +  str(sheet.cell(row=3, column=5).value) + "-RES.txt"
+    fileName="AV-"+ sheet.cell(row=2, column=2).value[:4] + "-" + sheet.cell(row=3, column=2).value[:4] + "-" + str(sheet.cell(row=3, column=3).value) + "-" + str(sheet.cell(row=3, column=4).value) + "-" +  str(sheet.cell(row=3, column=5).value) + "-RES.txt"
     f = open(fileName, "w")
     f.write(cell.value)
     cell = sheet.cell(row=2, column=2)
@@ -249,10 +249,10 @@ def createResponse():
     data = "          "
     f.write(data)
     r=7
-
+    f.write("\n")
 
     for x in range(int(cell.value)):
-        f.write("\n")
+
         cell.value = "70"
         f.write(cell.value)
         cell = sheet.cell(row=r, column=8)
@@ -373,6 +373,7 @@ def createResponse():
         f.write(cell.value)
 
         r=r+1
+        f.write("\n")
 
     f.close()
     tk.messagebox.showinfo(title="Response File", message="File Created sucessfuly")
